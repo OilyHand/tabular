@@ -8,15 +8,37 @@
 #include <algorithm>
 #include <cstdint>
 
-typedef struct {
+class Term {
+  public:
     uint32_t number;
     bool     is_dontCare;
-} Term;
+    Term();
+    Term(uint32_t n, bool dc);
+};
 
-typedef struct {
-    uint32_t number;
-    uint32_t mask;
-} Cube;
+class Cube {
+  public:
+    Cube();
+    void setNumber(uint32_t n);
+    void setMask(uint32_t m);
+  
+  private:
+    bool     selected_;
+    uint32_t number_;
+    uint32_t mask_;
+};
+
+class CNode{
+  Cube  content;
+  Cube* next;
+
+  CNode();
+};
+
+class Group{
+  int index;
+  
+};
 
 class TruthTable {
   public:
@@ -41,17 +63,6 @@ class TruthTable {
     int index_;
     std::vector<Term> table;
 };
-
-
-class List {
-  public:
-    List();
-    ~List();
-
-  private:
-
-};
-
 
 
 // =============================================================
